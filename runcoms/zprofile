@@ -72,3 +72,10 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
+
+#
+# Java
+#
+
+export JAVA_HOME="`/usr/libexec/java_home 1.7`"
+

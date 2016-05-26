@@ -117,7 +117,8 @@ alias gmt='git mergetool'
 
 # Push (p)
 alias gp='git push'
-alias gpf='git push --force'
+alias gpff='git push --force'
+alias gpf='git push --force-with-lease'
 alias gpa='git push --all'
 alias gpA='git push --all && git push --tags'
 alias gpt='git push --tags'
@@ -143,7 +144,7 @@ alias gRs='git remote show'
 alias gRb='git-hub-browse'
 
 # Stash (s)
-alias gs='git stash'
+# alias gs='git stash'
 alias gsa='git stash apply'
 alias gsx='git stash drop'
 alias gsX='git-stash-clear-interactive'

@@ -11,3 +11,43 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+unsetopt CORRECT\
+
+# https://jasonneylon.wordpress.com/2011/04/22/opening-github-in-your-browser-from-the-terminal/
+gPR() {
+  branch=`git rev-parse --abbrev-ref HEAD`;
+
+  giturl=`git config --get remote.origin.url`;
+  giturl=${giturl/git\@github\.com\:/https://github.com/}
+  giturl=${giturl/\.git/}
+
+  open $giturl/compare/AppDirect:$1...$(git-branch-current 2> /dev/null);
+}
+
+gtrim() {
+	git branch --merged | grep -v "\*" | xargs -n 1 git branch -D
+}
+
+gcof() {
+	git remote add $1 https://github.com/$1/Appdirect.git; git fetch $1; git checkout --track $1/$2;
+}
+
+gaa() {
+	git add --all .
+}
+
+mvnv() {
+	mvn validate -P fe-resources
+}
+
+mvnp() {
+	mvn process-sources
+}
+
+filecount() {
+  find . -maxdepth 1 -type d | while read -r dir; do printf "%s:\t" "$dir"; find "$dir" -type f | wc -l; done
+}
+
+PATH=$PATH:/usr/local/sbin
+
